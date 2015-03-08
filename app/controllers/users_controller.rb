@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user.id 
-			redirect_to articles_index_path
+			redirect_to root_path
+			flash[:notice] = "You've created a new user."
 		else
 			redirect_to new_user_path
 		end

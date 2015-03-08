@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authentiate_user!, except: [:index, :show]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.order('created_at DESC')
   end
 
   # GET /articles/1
@@ -69,6 +70,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params[:article]
+      params.require[:article].permit(:title, :body)
     end
 end
