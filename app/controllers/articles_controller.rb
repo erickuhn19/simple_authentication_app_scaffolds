@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show]
 
   # GET /articles
   # GET /articles.json
