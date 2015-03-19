@@ -1,6 +1,8 @@
 <%= link_to 'HOME', root_path %>
 <%= link_to 'sign up', new_user_path %>
 <%= link_to 'Log IN', login_path %>
-<%= link_to 'Log OUT', logout_path %>
-<%= current_user %>
+<% if current_user %>
+	Logged in as <%= current_user.email %>
+	<%= link_to 'Log OUT', logout_path %>
+<% end %>
 
